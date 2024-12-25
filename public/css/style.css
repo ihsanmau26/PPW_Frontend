@@ -1,0 +1,43 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.navbar .nav-link {
+    color: black;
+}
+
+.navbar .nav-link:hover {
+    color: darkgray;
+}
+
+.navbar .navbar-brand img {
+    max-height: 50px;
+}
+
+.navbar ul li {
+    padding: 5px;
+}
+
+.logo-img{
+    width: 150px;
+    height: auto;
+    padding-left: 5px;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.display-4 {
+    font-weight: 700;
+}
+
+.lead {
+    margin-bottom: 20px;
+}
+
+.custom-img {
+    width: 450px;
+    height: auto;
+}
+
