@@ -38,6 +38,11 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link {{ Request::is('shifts') ? 'active' : '' }}" href="{{ route('shifts.index') }}">
+                            <i class="fas fa-calendar-days"></i> Shift
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link {{ Request::is('patients') ? 'active' : '' }}" href="{{ route('patients.index') }}">
                             <i class="fa fa-address-book"></i> Patient
                         </a>

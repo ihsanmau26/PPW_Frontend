@@ -60,16 +60,38 @@
             const shifts = response.data;
             const shiftInputs = $('#shiftInputs');
 
+            const groupedShifts = {};
+
             shifts.forEach((shift) => {
-                const shiftHTML = `
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="shifts[]" value="${shift.id}" id="shift-${shift.id}">
-                        <label class="form-check-label" for="shift-${shift.id}">
-                            ${shift.day} (${shift.shift_start} - ${shift.shift_end})
-                        </label>
-                    </div>`;
-                shiftInputs.append(shiftHTML);
+                if (!groupedShifts[shift.day]) {
+                    groupedShifts[shift.day] = [];
+                }
+                groupedShifts[shift.day].push(shift);
             });
+
+            for (const day in groupedShifts) {
+                shiftInputs.append(`
+                    <div class="mb-1">
+                        <strong>${day}</strong>
+                    </div>
+                `);
+
+                groupedShifts[day].forEach((shift) => {
+                    shiftInputs.append(`
+                        <div class="form-check mb-1">
+                            <input 
+                                class="form-check-input" 
+                                type="checkbox" 
+                                name="shifts[]" 
+                                value="${shift.id}" 
+                                id="shift-${shift.id}">
+                            <label class="form-check-label" for="shift-${shift.id}">
+                                ${shift.shift_start} - ${shift.shift_end}
+                            </label>
+                        </div>
+                    `);
+                });
+            }
         });
 
         $('#doctorForm').on('submit', function (e) {

@@ -105,6 +105,24 @@ Route::group(['prefix' => 'medicines'], function () {
     })->name('medicines.edit');
 });
 
+Route::group(['prefix' => 'shifts'], function () {
+    Route::get('/', function () {
+        return view('shifts');
+    })->name('shifts.index');
+
+    Route::get('/add', function () {
+        return view('shifts-add');
+    })->name('shifts.add');
+
+    Route::get('{shiftId}/detail', function () {
+        return view('shifts-detail');
+    })->name('shifts.detail');
+
+    Route::get('{shiftId}/edit', function () {
+        return view('shifts-edit');
+    })->name('shifts.edit');
+});
+
 Route::group(['prefix' => 'doctors'], function () {
     Route::get('/', function () {
         return view('doctors');
