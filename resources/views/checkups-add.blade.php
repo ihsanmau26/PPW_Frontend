@@ -28,7 +28,7 @@
         </select>
     </div>
     <div class="d-flex justify-content-between">
-        <a href="{{ route('checkups.index') }}" class="btn btn-secondary">Back</a>
+        <button class="btn btn-secondary" onclick="history.back()">Back</button>
         <button type="submit" class="btn btn-success" id="saveCheckupBtn">Save</button>
     </div>
 </form>

@@ -7,13 +7,11 @@
     <h1>Medicine Detail</h1>
 
     <div id="medicineDetail">
-        <!-- Spinner loading sebelum data dimuat -->
         <div class="spinner-border text-primary" role="status">
             <span class="visually-hidden">Loading...</span>
         </div>
     </div>
 
-    <!-- Tombol Back dan Edit di bawah card -->
     <div id="actionButtons" class="d-flex justify-content-end mt-3" style="display: none;">
         <button class="btn btn-secondary me-2" onclick="history.back()">Back</button>
         <button class="btn btn-warning" id="editMedicineBtn">Edit</button>
@@ -37,7 +35,6 @@
             return;
         }
 
-        // Setup Authorization token
         $.ajaxSetup({
             headers: {
                 Accept: 'application/json',
@@ -45,7 +42,6 @@
             },
         });
 
-        // Load medicine detail
         $.ajax({
             url: `http://localhost:8000/api/medicines/${medicineId}`,
             method: 'GET',
@@ -66,7 +62,6 @@
 
                 $('#medicineDetail').html(detailHtml);
 
-                // Tampilkan tombol Back dan Edit setelah data berhasil dimuat
                 $('#actionButtons').show();
             },
             error: function (xhr) {
@@ -76,7 +71,6 @@
             },
         });
 
-        // Edit button functionality
         $('#editMedicineBtn').on('click', function () {
             localStorage.setItem('medicineId', medicineId);
             window.location.href = `/medicines/${medicineId}/edit`;

@@ -29,7 +29,7 @@
     </div>
 
     <div class="d-flex justify-content-between">
-        <a href="{{ route('medicines.index') }}" class="btn btn-secondary">Back</a>
+        <button class="btn btn-secondary" onclick="history.back()">Back</button>
         <button type="submit" class="btn btn-success" id="saveMedicineBtn">Save Medicine</button>
     </div>
 </form>

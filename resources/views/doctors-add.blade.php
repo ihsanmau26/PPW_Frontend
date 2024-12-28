@@ -34,7 +34,7 @@
     </div>
 
     <div class="d-flex justify-content-between">
-        <a href="{{ route('doctors.index') }}" class="btn btn-secondary">Back</a>
+        <button class="btn btn-secondary" onclick="history.back()">Back</button>
         <button type="submit" class="btn btn-success" id="saveDoctorBtn">Save</button>
     </div>
 </form>
@@ -49,7 +49,6 @@
             return;
         }
 
-        // Setup headers untuk semua request
         $.ajaxSetup({
             headers: {
                 Accept: 'application/json',
@@ -57,7 +56,6 @@
             },
         });
 
-        // Ambil data shifts dari API
         $.get('http://localhost:8000/api/shifts', function (response) {
             const shifts = response.data;
             const shiftInputs = $('#shiftInputs');
@@ -74,7 +72,6 @@
             });
         });
 
-        // Handle submit form
         $('#doctorForm').on('submit', function (e) {
             e.preventDefault();
 

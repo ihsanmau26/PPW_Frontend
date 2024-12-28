@@ -37,7 +37,7 @@
         <input type="text" id="phone_number" name="phone_number" class="form-control" placeholder="Patient's Phone Number" required>
     </div>
     <div class="d-flex justify-content-between">
-        <a href="{{ route('patients.index') }}" class="btn btn-secondary">Back</a>
+        <button class="btn btn-secondary" onclick="history.back()">Back</button>
         <button type="submit" class="btn btn-success" id="savePatientBtn">Save</button>
     </div>
 </form>

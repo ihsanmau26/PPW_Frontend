@@ -18,7 +18,7 @@
         <textarea id="notes" name="notes" class="form-control" rows="4" placeholder="Enter Notes (Optional)"></textarea>
     </div>
     <div class="d-flex justify-content-between">
-        <a href="{{ route('histories.index') }}" class="btn btn-secondary">Back</a>
+        <button class="btn btn-secondary" onclick="history.back()">Back</button>
         <button type="submit" class="btn btn-success" id="saveCheckupHistoryBtn">Update</button>
     </div>
 </form>

@@ -27,7 +27,7 @@
     </div>
 
     <div class="d-flex justify-content-between">
-        <a href="{{ route('doctors.index') }}" class="btn btn-secondary">Back</a>
+        <button class="btn btn-secondary me-2" onclick="history.back()">Back</button>
         <button type="submit" class="btn btn-success" id="saveDoctorBtn">Save</button>
     </div>
 </form>
@@ -64,15 +64,38 @@
                 const shifts = response.data;
                 const shiftInputs = $('#shiftInputs');
 
+                const groupedShifts = {};
+
                 shifts.forEach((shift) => {
-                    shiftInputs.append(`
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="shifts[]" value="${shift.id}" id="shift-${shift.id}">
-                            <label class="form-check-label" for="shift-${shift.id}">
-                                ${shift.day} (${shift.shift_start} - ${shift.shift_end})
-                            </label>
-                        </div>`);
+                    if (!groupedShifts[shift.day]) {
+                        groupedShifts[shift.day] = [];
+                    }
+                    groupedShifts[shift.day].push(shift);
                 });
+
+                for (const day in groupedShifts) {
+                    shiftInputs.append(`
+                        <div class="mb-1">
+                            <strong>${day}</strong>
+                        </div>
+                    `);
+
+                    groupedShifts[day].forEach((shift) => {
+                        shiftInputs.append(`
+                            <div class="form-check mb-1">
+                                <input 
+                                    class="form-check-input" 
+                                    type="checkbox" 
+                                    name="shifts[]" 
+                                    value="${shift.id}" 
+                                    id="shift-${shift.id}">
+                                <label class="form-check-label" for="shift-${shift.id}">
+                                    ${shift.shift_start} - ${shift.shift_end}
+                                </label>
+                            </div>
+                        `);
+                    });
+                }
 
                 $.ajax({
                     url: `http://localhost:8000/api/users/doctors/${userId}`,

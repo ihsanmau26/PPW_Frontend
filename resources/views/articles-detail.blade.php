@@ -66,6 +66,10 @@
   </div>
 </div>
 
+<div class="mt-3">
+    <button class="btn btn-secondary" onclick="history.back()">Back</button>
+</div>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -112,9 +116,10 @@
                     <br>
                     <h4>
                         Comments (${article.comment_total})
-                        <button class="btn btn-primary float-end" id="addCommentBtn">Add Comment</button>
+                        <button class="btn btn-primary float-end" id="toggleCommentsBtn">Show Comments</button>
+                        <button class="btn btn-success float-end me-2" id="addCommentBtn">Add Comment</button>
                     </h4>
-                    <div id="comments">
+                    <div id="comments" style="display: none;">
                         ${article.comments.length ? article.comments.map(comment => `
                             <div class="card my-3">
                                 <div class="card-body">
@@ -129,6 +134,17 @@
                 `;
 
                 $('#articleDetail').html(articleHtml);
+
+                $('#toggleCommentsBtn').on('click', function () {
+                    const commentsDiv = $('#comments');
+                    if (commentsDiv.is(':visible')) {
+                        commentsDiv.hide();
+                        $(this).text('Show Comments');
+                    } else {
+                        commentsDiv.show();
+                        $(this).text('Close Comments');
+                    }
+                });
 
                 $('#editArticleBtn').on('click', function () {
                     window.location.href = `/articles/${articleId}/edit`;

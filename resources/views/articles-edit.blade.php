@@ -28,7 +28,7 @@
         <textarea id="articles_content" name="articles_content" class="form-control" rows="4" placeholder="Article Content" required></textarea>
     </div>
     <div class="d-flex justify-content-between">
-        <a href="{{ route('articles.index') }}" class="btn btn-secondary">Back</a>
+        <button class="btn btn-secondary" onclick="history.back()">Back</button>
         <button type="submit" class="btn btn-success" id="saveArticleBtn">Update</button>
     </div>
 </form>

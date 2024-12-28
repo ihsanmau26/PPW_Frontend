@@ -39,7 +39,7 @@
     <button type="button" id="addMedicine" class="btn btn-secondary my-3">Add Another Medicine</button>
 
     <div class="d-flex justify-content-between mt-4">
-        <a href="{{ route('checkups.index') }}" class="btn btn-secondary">Back</a>
+        <button class="btn btn-secondary" onclick="history.back()">Back</button>
         <button type="submit" class="btn btn-success">Save Prescription</button>
     </div>
 </form>
@@ -119,7 +119,6 @@ $(document).ready(function () {
             </div>
         `;
 
-        // Insert the new fields before the 'Add Another Medicine' button
         $(medicineField).insertBefore('#addMedicine');
         renderMedicinesSelectInNewField(medicineCount);
     });
